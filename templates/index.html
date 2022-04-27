@@ -11,8 +11,11 @@
 							<p class="subtitle">Analyse</p>
 							<h1>All of your bengali sentiment</h1>
 							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Bulk Analysis</a>
-								<a href="contact.html" class="bordered-btn">Contact Us</a>
+								<form method="POST">
+									{% csrf_token %}
+									<input class="form-control form-control-lg mb-4" type="text" placeholder="Please input your text">
+									<input type="submit" value="Submit">
+								</form>
 							</div>
 						</div>
 					</div>
