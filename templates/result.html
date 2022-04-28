@@ -8,15 +8,8 @@
 				<div class="col-lg-9 offset-lg-2 text-center">
 					<div class="hero-text">
 						<div class="hero-text-tablecell">
-							<p class="subtitle">Analyse</p>
-							<h2 class="text-light">All of your bengali sentiment</h2>
-							<div class="hero-btns">
-								<form method="POST">
-									{% csrf_token %}
-									{{form}}
-									<input type="submit" value="Submit">
-								</form>
-							</div>
+							<h2 style="color:#ff5e00" class="subtitle">"{{contexts.input}}"</h2>
+							<h1>{{contexts.result}}</h1>
 						</div>
 					</div>
 				</div>
