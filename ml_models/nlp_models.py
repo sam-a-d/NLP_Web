@@ -5,11 +5,33 @@ import pandas as pd
 from django.http import HttpResponse
 
 
-def predict_sentiment(text):
-
-    nlp_model = joblib.load('static/nlp/trained_models/nlp_model.joblib')
-  
-    test_data = [text]
-    res = nlp_model.predict(test_data)
+class Sentiment_analysis:
     
-    return res[0]
+    nlp_model = joblib.load('static/nlp/trained_models/nlp_model.joblib')
+   
+    def get_sentence_analysis(self, sentence):
+        
+        '''
+            this method analyse sentence from user input
+        '''
+        self.sentence = sentence
+        res = self.nlp_model.predict([self.sentence])
+        
+        return res[0]
+
+
+    def get_comment_analysis(self, comment):
+        
+        '''
+            this method analyse comments from a specific post
+        '''
+
+        self.comments = comment
+        print(self.comments)
+
+    def get_bulk_analysis(self, comments):
+        
+        '''
+            this method will analyse bulk comments given by a user (may be they upload a file)
+        '''
+        pass

@@ -1,9 +1,12 @@
 from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
-from .models import Post, Comment
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
+
+# defied modules
+from .models import Post, Comment
+from ml_models.nlp_models import Sentiment_analysis
 
 # Create your views here.
 def blog(request):
@@ -51,7 +54,6 @@ def create_comment(request):
         
         if comment:
             Comment.objects.create(post_id = related_post, commenter=user, content = comment)
-
 
      
         return HttpResponseRedirect(next)

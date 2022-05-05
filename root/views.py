@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .forms import Sentiment_form
-from ml_models.nlp_models import predict_sentiment
+from ml_models.nlp_models import Sentiment_analysis
 
 # Create your views here.
 def home(request):
@@ -13,7 +13,10 @@ def home(request):
         if form.is_valid():
             sentiment = form.cleaned_data['sentiment']
   
-            res = predict_sentiment(sentiment)
+            # res = predict_sentiment(sentiment)
+
+            senti = Sentiment_analysis()
+            res = senti.get_sentence_analysis(sentiment)
 
             contexts = {
                 'result': res,
