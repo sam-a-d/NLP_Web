@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -28,9 +30,11 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse("Category_detail", kwargs={"pk": self.pk})
 
+
 class Comment(models.Model):
 
-    post_id = models.IntegerField(default=1)
+    post_id = models.ForeignKey(Post,on_delete=models.CASCADE)
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.TimeField(auto_now=True)
     content = models.TextField()

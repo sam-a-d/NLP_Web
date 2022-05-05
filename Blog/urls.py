@@ -18,5 +18,7 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.blog, name = 'blog' ),
+    path('', views.BlogListView.as_view(), name = 'blog' ),
+    path('<int:pk>', views.BlogDetailView.as_view(), name = 'blog-single' ),
+    path('comment/new/', views.create_comment, name='comment-new')
 ]
