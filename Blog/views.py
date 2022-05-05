@@ -32,9 +32,19 @@ class BlogDetailView(DetailView):
     template_name = "blog/blog-single.html"
     context_object_name = 'post'
 
+
     def get_context_data(self, **kwargs):
+        
         context = super().get_context_data(**kwargs)
-        context["comments"] = Comment.objects.filter(post_id = self.kwargs.get('pk'))
+        comments_on_post = Comment.objects.filter(post_id = self.kwargs.get('pk'))
+
+        senti = Sentiment_analysis()
+        comment_analysis_result = senti.get_comment_analysis([comment.content for comment  in comments_on_post])
+
+        context["comments"] = comments_on_post
+        context['comment_analysis_result'] = comment_analysis_result
+
+
         return context
     
 

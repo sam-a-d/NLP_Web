@@ -12,8 +12,6 @@ def home(request):
 
         if form.is_valid():
             sentiment = form.cleaned_data['sentiment']
-  
-            # res = predict_sentiment(sentiment)
 
             senti = Sentiment_analysis()
             res = senti.get_sentence_analysis(sentiment)

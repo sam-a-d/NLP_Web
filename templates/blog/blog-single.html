@@ -22,6 +22,15 @@
 						</div>
 						<div class="comments-list-wrap">
 							<h3 class="comment-count-title"> Comments</h3>
+
+							<div class="row mb-4">
+								<div class="col bg-success text-light py-4"><strong>Positive: {{comment_analysis_result.positive}}</strong> </div>
+								<div class="col bg-info text-light py-4"><strong>Neutral: {{comment_analysis_result.neutral}}</strong> </div>
+								<div class="col bg-danger text-light py-4"><strong>Negative: {{comment_analysis_result.negative}}</strong></div>
+							</div>
+
+							
+
 							<div class="comment-list">
 								
 								{% for comment in comments %}
@@ -31,7 +40,7 @@
 									</div>
 									<div>
 										<p style='color:#ff5e00'><strong>{{comment}}</strong></p>
-										<p>By: {{comment.commenter}} <span class="comment-date">on {{comment.created}}</span></p>
+										<p style='color:#0519225e'>By: {{comment.commenter}} <span class="comment-date">on {{comment.created}}</span></p>
 									</div>
 								</div>
 								{% endfor %}

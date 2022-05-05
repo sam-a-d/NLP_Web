@@ -1,7 +1,7 @@
 from sklearn import feature_extraction
 import joblib
 import pandas as pd
-
+from collections import Counter
 from django.http import HttpResponse
 
 
@@ -27,7 +27,10 @@ class Sentiment_analysis:
         '''
 
         self.comments = comment
-        print(self.comments)
+        res = self.nlp_model.predict(self.comments)
+        sentiment_count =  Counter(res)
+        return dict(sentiment_count)
+
 
     def get_bulk_analysis(self, comments):
         
