@@ -41,6 +41,7 @@ class BlogDetailView(DetailView):
         senti = Sentiment_analysis()
         comment_analysis_result = senti.get_comment_analysis([comment.content for comment  in comments_on_post])
 
+
         context["comments"] = comments_on_post
         context['comment_analysis_result'] = comment_analysis_result
 

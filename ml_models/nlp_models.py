@@ -28,8 +28,19 @@ class Sentiment_analysis:
 
         self.comments = comment
         res = self.nlp_model.predict(self.comments)
-        sentiment_count =  Counter(res)
-        return dict(sentiment_count)
+        sentiment_count =  dict(Counter(res))
+        
+        sentiments = ['positive', 'neutral', 'negative']
+
+        for review in sentiments:
+            if review not in sentiment_count.keys():
+                sentiment_count[review] = 0
+        
+        sentiment_count['percent_positive'] =  round(sentiment_count['positive'] * 100 / len(res), 2) 
+        sentiment_count['percent_neutral'] =   round(sentiment_count['neutral']  * 100 / len(res), 2) 
+        sentiment_count['percent_negative'] =  round(sentiment_count['negative'] * 100 / len(res), 2)
+
+        return sentiment_count
 
 
     def get_bulk_analysis(self, comments):

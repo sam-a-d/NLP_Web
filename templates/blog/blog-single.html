@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
     <!-- single article section -->
@@ -24,11 +24,24 @@
 							<h3 class="comment-count-title"> Comments</h3>
 
 							<div class="row mb-4">
-								<div class="col bg-success text-light py-4"><strong>Positive: {{comment_analysis_result.positive}}</strong> </div>
-								<div class="col bg-info text-light py-4"><strong>Neutral: {{comment_analysis_result.neutral}}</strong> </div>
-								<div class="col bg-danger text-light py-4"><strong>Negative: {{comment_analysis_result.negative}}</strong></div>
-							</div>
+								{% if comment_analysis_result.percent_positive > 0 %}
+									<div style="width: {{comment_analysis_result.percent_positive}}%" class="bg-success text-light text-center p-2"><strong>{{comment_analysis_result.percent_positive}}%</strong> </div>
+								{% endif %}
 
+								{% if comment_analysis_result.percent_neutral > 0 %}
+									<div style="width: {{comment_analysis_result.percent_neutral}}%"  class="bg-info text-light text-center  p-2"><strong>{{comment_analysis_result.percent_neutral}}%</strong> </div>
+								{% endif %}
+
+								{% if comment_analysis_result.percent_negative > 0 %}
+									<div style="width: {{comment_analysis_result.percent_negative}}%"  class="bg-danger text-light text-center  p-2"><strong>{{comment_analysis_result.percent_negative}}%</strong></div>
+								{% endif %}
+							</div>
+							
+							<div class="row mb-4">
+								<p style='width:20px; height:20px' class='bg-success'></p> &nbsp; Positive 
+								<p style='width:20px; height:20px' class='bg-info ml-4'></p> &nbsp; Neutral 
+								<p style='width:20px; height:20px' class='bg-danger ml-4'></p> &nbsp; Negative 
+							</div>
 							
 
 							<div class="comment-list">
