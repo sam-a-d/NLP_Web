@@ -1,14 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
-import Navbar from './components/Navigation';
+import './static/css/bootstrap/bootstrap.min.css';
+import './static/css/bootstrap/bootstrap.min.css.map';
+import './static/css/main.css';
+import './static/css/all.min.css';
+import './static/css/animate.css';
+import './static/css/magnific-popup.css';
+import './static/css/meanmenu.min.css';
+import './static/css/owl.carousel.css';
+import './static/css/responsive.css';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+
+import BlogList from './components/blog/Blog-list';
+import Navbar from './components/Navigation';
+import BlogSingle from './components/blog/Blog-single';
+import About from './components/about';
+import Home from './components/Home';
+
+const PageNotFound = () =>{
+  <div>
+      <h1>404</h1>
+  </div>
+}
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App min-height-100">
+      <BrowserRouter>
+
         <Navbar />
-        <p>Its working fine</p>
-      </header>
+        
+        <Routes >
+            <Route exact path="/" element={<Home />}> </Route>
+            <Route path="/articles" element={<BlogList />}> </Route>
+            <Route path="/about" element={<About />}> </Route>
+            <Route path="/single-articles" element={<BlogSingle />}> </Route>
+            <Route element={PageNotFound} />
+        </Routes>
+        
+      </BrowserRouter>
     </div>
   );
 }

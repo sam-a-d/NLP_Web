@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 95vh;
 }
 
 .App-logo {
@@ -35,4 +36,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+.min-height-100{
+  min-height: 101vh;
+}
+
+.homepage-hero{
+  background-color: #07212e;
+  min-height: 80vh;
+}
+
+.senti-form{
+  padding-top: 15vh;
 }
