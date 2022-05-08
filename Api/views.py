@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 from Blog.models import Post
-from .serializer import PostSerializer, PostDetailSerializer
+from .serializer import *
 # Create your views here.
 
 def api(request):
@@ -30,3 +30,15 @@ def post_detail(request, pk):
         
         serializer = PostDetailSerializer(post)
         return JsonResponse(serializer.data)
+
+@csrf_exempt
+def article_comments_analysis(request):
+    demo = {
+        'name' : 'Abdus',
+        'age' : '24'
+    }
+    
+    obj = Geeks(demo)
+    serializer = GeeksSerializer(obj)
+
+    return JsonResponse(serializer.data)

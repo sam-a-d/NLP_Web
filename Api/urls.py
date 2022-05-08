@@ -21,5 +21,6 @@ urlpatterns = [
     path('', views.api, name = 'api' ),
     path('post-api/', views.post_api, name = 'post-api' ),
     path('post/<int:pk>', views.post_detail, name = 'post-detail' ),
+    path('article_com/', views.article_comments_analysis,),
 
 ]

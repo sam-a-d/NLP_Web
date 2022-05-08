@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from Blog.models import Post, Comment
 import json
+from django.http import JsonResponse
 
 from ml_models.nlp_models import Sentiment_analysis
 
@@ -20,8 +21,43 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class PostDetailSerializer(serializers.ModelSerializer):
+   
+    # comments serializer is called to obtain related comments with the post
     comments = CommentSerializer(many=True, read_only = True)
-    
+
+    # my field is a custom field that would add to the serializer
+    # Adding custom field to the serializer
+
+    custom_field = serializers.SerializerMethodField('get_sentiment_analysis_res')
+
+
+    def get_sentiment_analysis_res(self, Post):
+
+        # getting the comments related to this post
+        # the comments will be feed in to sentiment analysis
+
+        comments = Post.comments.all()
+        related_comments = [com.content for com in comments]
+
+        # analyse sentiment using machine learning model
+        senti = Sentiment_analysis()
+        comment_analysis_result = senti.get_comment_analysis(related_comments)
+        
+        # return comments statistics that recived from the sentiment analysis
+        return {'comment_stats' : comment_analysis_result}
+
     class Meta:
         model = Post
-        fields = ['id', 'title', 'created' ,'content', 'comments',]
+        fields = ['id', 'title', 'created' ,'content', 'comments', 'custom_field']
+
+
+
+class Geeks(object):
+	def __init__(self, dictionary):
+		self.dictionary = dictionary
+
+# create a serializer
+class GeeksSerializer(serializers.Serializer):
+	# initialize fields
+	dictionary = serializers.DictField(
+	child = serializers.CharField())
