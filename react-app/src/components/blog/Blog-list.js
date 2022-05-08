@@ -25,11 +25,6 @@ class BlogList extends Component{
     }
 
 
-
-
-
-
-
 render () {
     return(
         <>
@@ -41,12 +36,12 @@ render () {
                             
                             <div className="col-lg-4 col-md-6" key={post.id}>
                                 <div className="single-latest-news">
-                                    <a href="/"><div className="latest-news-bg news-bg-1"></div></a>
+                                    <span><div className="latest-news-bg news-bg-1"></div></span>
                                     <div className="news-text-box">
-                                        <h3><a href="/">{post.title}</a></h3>
+                                        <h3><span href="/">{post.title}</span></h3>
                                         <p className="blog-meta">
                                             <span className="author"><i className="fas fa-user"></i> Admin</span>
-                                            <span className="date"><i className="fas fa-calendar"></i> Post date </span>
+                                            <span className="date"><i className="fas fa-calendar"></i> {post.created} </span>
                                         </p>
                                         <p className="excerpt"></p>
                                         <Link to={`/article/${post.id}`}>

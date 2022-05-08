@@ -63,17 +63,17 @@ function BlogDetail() {
 
                                         <div className="comment-list">
                                             
-                                            
-                                            <div className="single-comment-body mb-2 p-2">
-                                                <div className="comment-user-avater">
-                                                    user avator
-                                                </div>
-                                                <div>
-                                                    <p><strong>Comment</strong></p>
-                                                    <p>By: Commenter <span className="comment-date">on Comment time </span></p>
-                                                </div>
-                                            </div>
-                                            
+                                            {post.comments.map(
+                                                comm =>
+
+                                                    <div className="single-comment-body mb-2 p-2">
+                                                        
+                                                        <div>
+                                                            <p><strong>{comm.content}</strong></p>
+                                                            <p className="comment-meta">By: Admin <span className="comment-date">on {comm.created} </span></p>
+                                                        </div>
+                                                    </div>
+                                            )}
                                         </div>
                                     </div>
 
