@@ -14,9 +14,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import BlogList from './components/blog/Blog-list';
 import Navbar from './components/Navigation';
-import BlogSingle from './components/blog/Blog-single';
 import About from './components/about';
 import Home from './components/Home';
+import BlogDetail from './components/blog/Blog-detail';
 
 const PageNotFound = () =>{
   <div>
@@ -35,7 +35,7 @@ function App() {
             <Route exact path="/" element={<Home />}> </Route>
             <Route path="/articles" element={<BlogList />}> </Route>
             <Route path="/about" element={<About />}> </Route>
-            <Route path="/single-articles" element={<BlogSingle />}> </Route>
+            <Route path="/article/:post_id" element={<BlogDetail />}></Route>
             <Route element={PageNotFound} />
         </Routes>
         

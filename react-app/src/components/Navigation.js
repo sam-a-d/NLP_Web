@@ -26,8 +26,6 @@ function Navbar() {
                                 <li className="text-dark"><Link to="/">Home</Link></li>
                                 <li><Link to="/about" >About</Link></li>
                                 <li><Link to="/articles" >Articles</Link></li>
-                                <li><Link to="/single-articles" >Single Articles</Link></li>
-                                
                                 <li>
                                     
                                 </li>

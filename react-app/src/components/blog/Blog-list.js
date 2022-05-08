@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import BlogPagiantion from "./BlogPagination";
+import {Link} from 'react-router-dom'
 
 class BlogList extends Component{
     constructor(props){
@@ -20,7 +21,7 @@ class BlogList extends Component{
             this.setState({
                 posts : data
             })
-            ))
+        ))
     }
 
 
@@ -38,7 +39,7 @@ render () {
                         {this.state.posts.map (
                             post =>
                             
-                            <div className="col-lg-4 col-md-6">
+                            <div className="col-lg-4 col-md-6" key={post.id}>
                                 <div className="single-latest-news">
                                     <a href="/"><div className="latest-news-bg news-bg-1"></div></a>
                                     <div className="news-text-box">
@@ -48,7 +49,10 @@ render () {
                                             <span className="date"><i className="fas fa-calendar"></i> Post date </span>
                                         </p>
                                         <p className="excerpt"></p>
-                                        <a href="/" className="read-more-btn">read more <i className="fas fa-angle-right"></i></a>
+                                        <Link to={`/article/${post.id}`}>
+                                            <span className="read-more-btn">read more <i className="fas fa-angle-right"></i></span>
+                                        </Link>
+
                                     </div>
                                 </div>
                             </div>

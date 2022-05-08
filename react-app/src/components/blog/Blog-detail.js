@@ -1,35 +1,29 @@
-import React, { Component } from "react";
-// import {Link, useParams} from 'react-router-dom'
+import React, {useState, useEffect} from "react";
+import axios from 'axios'
+import {useParams} from 'react-router-dom'
 
-class BlogSingle extends Component{
+function BlogDetail() {
 
-
-    constructor(props){
-        super(props)
-        this.state = {
-            post : [],
-            is_loaded : true
-        }
-    }
-
-  
-
-
-    componentDidMount(){
-        let url = 'http://localhost:8000/api/post/' + 1;
-        fetch(url)
-        .then(res => res.json())
-        .then(data =>(
-            this.setState({
-                post : data
-            })
-        
-        ))
-        
-    }
-
+    let {post_id} = useParams();
     
-render(){
+    const url = `http://localhost:8000/api/post/${post_id}`;
+
+    const [post, setPost] = useState(null)
+    
+    useEffect(()=>{
+        axios.get(url)
+        .then(response =>{
+            setPost(response.data)
+        })
+    }, [url])
+
+
+    if(post == null){
+        return(
+            <>
+            </>
+        )
+    }
     return(
         <>
             {/* <h1>{post_ids}</h1> */}
@@ -39,20 +33,20 @@ render(){
                             <div className="col-lg-8">
                                 
                                 <div className="single-article-section">
-                                    {this.state.post.map(
-                                        singlePost =>
+                                    
+                                        
                                         <div className="single-article-text">
-                                            <h1>{singlePost.title}</h1>
+                                            <h1>{post.title}</h1>
                                             <p className="blog-meta">
                                                 <span className="author"><i className="fas fa-user"></i> Admin</span>
                                                 <span className="date"><i className="fas fa-calendar"></i> Post creation date  </span>
                                             </p>
                                             <p className='text-justify'>
-                                                {singlePost.content}
+                                                {post.content}
                                             </p>
                                             
                                         </div>
-                                    )}
+                                    
                                             <div className="comments-list-wrap">
                                         <h3 className="comment-count-title"> Comments</h3>
 
@@ -127,6 +121,6 @@ render(){
             </div>
         </>
     )
-}}
+}
 
-export default BlogSingle
+export default BlogDetail

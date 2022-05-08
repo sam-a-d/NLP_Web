@@ -13,7 +13,7 @@ function SentimentAnalysisForm() {
 							<div className="hero-btns">
 								<form>
                                 <div className="form-group">
-                                    <label for="comment">Your Sentiment:</label>
+                                    <label>Your Sentiment:</label>
                                     <textarea className="text-success form-control" rows="3" id="comment"></textarea>
                                 </div>
                                     <button className="btn btn-success" type="Submit">Submit</button>

@@ -1,6 +1,6 @@
 import React from "react";
 
-function About(params) {
+function About() {
     return(
         <>
             <p>About Us</p>

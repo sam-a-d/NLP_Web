@@ -22,11 +22,11 @@ def post_api(request):
 def post_detail(request, pk):
     
     try:
-        post = Post.objects.filter(pk = pk)
+        post = Post.objects.get(pk = pk)
     except Post.DoesNotExist:
         return HttpResponse(status = 404)
 
     if request.method == 'GET':
         
-        serializer = PostDetailSerializer(post, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        serializer = PostDetailSerializer(post)
+        return JsonResponse(serializer.data)
