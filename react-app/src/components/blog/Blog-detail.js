@@ -49,12 +49,7 @@ function BlogDetail() {
                                         </div>
                                     
                                     <div className="comments-list-wrap">
-                                        <h3 className="comment-count-title"> Comments</h3>
-
-                                        <div className="row mb-4">
-                                            Comment Analysis Summary 
-                                        </div>
-                                        
+                                                                                
                                         <Comment 
                                             the_comments={post.comments} 
                                             com_stat={post.custom_field.comment_stats}
