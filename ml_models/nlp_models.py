@@ -27,6 +27,8 @@ class Sentiment_analysis:
         '''
 
         self.comments = comment
+        if len(self.comments) == 0:
+            self.comments = ['যা খুশি করেন']
         res = self.nlp_model.predict(self.comments)
         sentiment_count =  dict(Counter(res))
         
