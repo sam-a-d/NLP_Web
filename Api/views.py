@@ -28,9 +28,17 @@ def post_detail(request, pk):
         return HttpResponse(status = 404)
 
     if request.method == 'GET':
-        
         serializer = PostDetailSerializer(post)
         return JsonResponse(serializer.data)
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = PostDetailSerializer(data = data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status = 201)
+        return JsonResponse(serializer.error, status=400)
+        
+
 
 @csrf_exempt
 def comments(request):
