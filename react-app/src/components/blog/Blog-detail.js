@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
+import Comment from "./comments/Comment";
 
 function BlogDetail() {
 
@@ -47,49 +48,24 @@ function BlogDetail() {
                                             
                                         </div>
                                     
-                                            <div className="comments-list-wrap">
+                                    <div className="comments-list-wrap">
                                         <h3 className="comment-count-title"> Comments</h3>
 
                                         <div className="row mb-4">
-                                            Sentiment Analysis Summary 
+                                            Comment Analysis Summary 
                                         </div>
                                         
-                                        <div className="row mb-4">
-                                            <p className='bg-success'></p> &nbsp; Positive 
-                                            <p className='bg-info ml-4'></p> &nbsp; Neutral 
-                                            <p className='bg-danger ml-4'></p> &nbsp; Negative 
-                                        </div>
-                                        
-
-                                        <div className="comment-list">
-                                            
-                                            {post.comments.map(
-                                                comm =>
-
-                                                    <div className="single-comment-body mb-2 p-2">
-                                                        
-                                                        <div>
-                                                            <p><strong>{comm.content}</strong></p>
-                                                            <p className="comment-meta">By: Admin <span className="comment-date">on {comm.created} </span></p>
-                                                        </div>
-                                                    </div>
-                                            )}
-                                        </div>
+                                        <Comment 
+                                            the_comments={post.comments} 
+                                            com_stat={post.custom_field.comment_stats}
+                                        />
                                     </div>
 
-                                    <div className="comment-template">
-                                        <h4>Leave a comment</h4>
-                                        <form>
-                                            
-                                            <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                                            <input type="hidden" name="post_id" value="{{ post.id }}" />
 
-                                            <p><textarea required name="comment" id="comment" cols="30" rows="10" placeholder="Your Comment"></textarea></p>
-                                            <p><input type="submit" value="Submit" /></p>
-                                        </form>
-                                    </div>
-                                    
                                 </div>
+
+
+
                             </div>
                             <div className="col-lg-4">
                                 <div className="sidebar-section">
