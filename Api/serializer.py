@@ -49,15 +49,3 @@ class PostDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ['id', 'title', 'created' ,'content', 'comments', 'custom_field']
-
-
-
-class Geeks(object):
-	def __init__(self, dictionary):
-		self.dictionary = dictionary
-
-# create a serializer
-class GeeksSerializer(serializers.Serializer):
-	# initialize fields
-	dictionary = serializers.DictField(
-	child = serializers.CharField())
