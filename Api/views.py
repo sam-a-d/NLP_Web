@@ -33,10 +33,6 @@ def post_detail(request, pk):
 
 @csrf_exempt
 def article_comments_analysis(request):
-    demo = {
-        'name' : 'Abdus',
-        'age' : '24'
-    }
     
     obj = Geeks(demo)
     serializer = GeeksSerializer(obj)
