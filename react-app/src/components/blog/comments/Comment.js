@@ -8,7 +8,7 @@ export default function Comment(props) {
         <>
             <CommentAnalysisStat com_stat={props.com_stat} />
             <AllComments the_comments={props.the_comments} />
-            <CommentForm />
+            <CommentForm post_id={props.post_id}/>
         </>
     )
 }

@@ -53,6 +53,7 @@ function BlogDetail() {
                                         <Comment 
                                             the_comments={post.comments} 
                                             com_stat={post.custom_field.comment_stats}
+                                            post_id = {post.id}
                                         />
                                     </div>
 

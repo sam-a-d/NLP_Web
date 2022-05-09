@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from rest_framework.parsers import JSONParser
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 
-from Blog.models import Post
+from Blog.models import Post, Comment
 from .serializer import *
 # Create your views here.
 
@@ -30,3 +31,18 @@ def post_detail(request, pk):
         
         serializer = PostDetailSerializer(post)
         return JsonResponse(serializer.data)
+
+@csrf_exempt
+def comments(request):
+    if request.method == 'GET':
+        comments = Comment.objects.all()
+        serializer = CommentSerializer(comments, many = True)
+        return JsonResponse(serializer.data, safe=False)
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = CommentSerializer(data= data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.error, status=400)
