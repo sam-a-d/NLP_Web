@@ -6,7 +6,7 @@
 
 .homepage-hero{
   background-color: #07212e;
-  min-height: 80vh;
+  min-height: 88vh;
 }
 
 .senti-form{
@@ -15,4 +15,8 @@
 
 .single-comment-body{
   background: #17a2b82e;
+}
+
+.main-menu>ul>li:hover{
+    background: #000;
 }
