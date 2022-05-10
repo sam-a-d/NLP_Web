@@ -15,11 +15,20 @@ class Sentiment_analysis:
             this method analyse sentence from user input
         '''
         self.sentence = sentence
+
+        # return a caution text if the input text is not provided e.g. empty string
+        if len(self.sentence) <= 0:
+            sentimet_result = {'sentiment_class' : 'Please input some text'}
+            return sentimet_result
+        
+        # predict the result according to the value inputed by the user
         res = self.nlp_model.predict([self.sentence])
         
+        # create an object consisting of the result and return when it got request
         sentimet_result = {
             'sentiment_class' : res[0]
         }
+        
         return sentimet_result
         # return res[0]
 

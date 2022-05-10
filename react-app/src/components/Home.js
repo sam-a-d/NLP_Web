@@ -1,5 +1,5 @@
 import React from "react";
-import SentimentAnalysisForm from "./generic/Form";
+import SentenceAnalysisForm from "./generic/SentenceAnalysis-form";
 // import heroBg from '../static/media/images/hero-bg.jpg'
 
 
@@ -19,7 +19,7 @@ function Home() {
               }}
             
             >
-                <SentimentAnalysisForm />
+                <SentenceAnalysisForm />
             </div>
         </>
     )
