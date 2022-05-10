@@ -17,7 +17,11 @@ class Sentiment_analysis:
         self.sentence = sentence
         res = self.nlp_model.predict([self.sentence])
         
-        return res[0]
+        sentimet_result = {
+            'sentiment_class' : res[0]
+        }
+        return sentimet_result
+        # return res[0]
 
 
     def get_comment_analysis(self, comment):

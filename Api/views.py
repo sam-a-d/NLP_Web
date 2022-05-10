@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from Blog.models import Post, Comment
 from .serializer import *
+from ml_models.nlp_models import Sentiment_analysis
 # Create your views here.
 
 def api(request):
@@ -54,3 +55,14 @@ def comments(request):
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.error, status=400)
+
+@csrf_exempt
+def SentenceAnalysis(request):
+    senti = Sentiment_analysis()
+    
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        sentence = data["sentence"]
+        res = senti.get_sentence_analysis(sentence)
+        serializer = SentenceAnalysisSerializer(res)
+        return JsonResponse(serializer.data)

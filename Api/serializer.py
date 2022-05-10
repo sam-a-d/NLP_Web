@@ -49,3 +49,7 @@ class PostDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ['id', 'title', 'created' ,'content', 'comments', 'custom_field']
+
+class SentenceAnalysisSerializer(serializers.Serializer):
+    sentiment_class = serializers.CharField(read_only = True)
+    
