@@ -17,6 +17,7 @@ import Navbar from './components/Navigation';
 import About from './components/about';
 import Home from './components/Home';
 import BlogDetail from './components/blog/Blog-detail';
+import Footer from './components/generic/Footer';
 
 const PageNotFound = () =>{
   <div>
@@ -26,19 +27,25 @@ const PageNotFound = () =>{
 function App() {
 
   return (
-    <div className="App min-height-100">
+    <div className="App">
+      
+
+      
       <BrowserRouter>
 
         <Navbar />
         
-        <Routes >
-            <Route exact path="/" element={<Home />}> </Route>
-            <Route path="/articles" element={<BlogList />}> </Route>
-            <Route path="/about" element={<About />}> </Route>
-            <Route path="/article/:post_id" element={<BlogDetail />}></Route>
-            <Route element={PageNotFound} />
-        </Routes>
-        
+        <div className='main-content-area'>
+          <Routes >
+              <Route exact path="/" element={<Home />}> </Route>
+              <Route path="/articles" element={<BlogList />}> </Route>
+              <Route path="/about" element={<About />}> </Route>
+              <Route path="/article/:post_id" element={<BlogDetail />}></Route>
+              <Route element={PageNotFound} />
+          </Routes>
+        </div>
+
+        <Footer />
       </BrowserRouter>
     </div>
   );

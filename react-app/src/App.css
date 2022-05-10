@@ -3,10 +3,13 @@
   min-height: 95vh;
 }
 
+.main-content-area{
+  min-height: 82vh;
+}
 
 .homepage-hero{
   background-color: #07212e;
-  min-height: 88vh;
+  min-height: 86vh;
 }
 
 .senti-form{
