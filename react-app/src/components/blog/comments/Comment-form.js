@@ -21,7 +21,6 @@ class CommentForm extends React.Component {
          }
         sleep(100).then(() => {
             //// code
-            console.log('handle comment called');
             this.props.onNewComment()
             })
     }

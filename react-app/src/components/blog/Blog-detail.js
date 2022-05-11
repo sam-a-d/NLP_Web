@@ -11,7 +11,6 @@ function BlogDetail() {
 
     const [post, setPost] = useState(null)
     const [total_comment, setTotal_comment] = useState(0)
-    console.log(total_comment)
     useEffect(()=>{
         axios.get(url)
         .then(response =>{
