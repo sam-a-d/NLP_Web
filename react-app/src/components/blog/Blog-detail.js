@@ -10,13 +10,14 @@ function BlogDetail() {
     const url = `http://localhost:8000/api/post/${post_id}`;
 
     const [post, setPost] = useState(null)
-    
+    const [total_comment, setTotal_comment] = useState(0)
+    console.log(total_comment)
     useEffect(()=>{
         axios.get(url)
         .then(response =>{
             setPost(response.data)
         })
-    }, [url])
+    }, [url, total_comment])
 
 
     if(post == null){
@@ -54,6 +55,7 @@ function BlogDetail() {
                                             the_comments={post.comments} 
                                             com_stat={post.custom_field.comment_stats}
                                             post_id = {post.id}
+                                            onNewComment = {() => setTotal_comment( total_comment + 1)}
                                         />
                                     </div>
 

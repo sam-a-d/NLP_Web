@@ -12,6 +12,18 @@ class CommentForm extends React.Component {
       }
       this.handleChange = this.handleChange.bind(this)
       this.handleSubmit = this.handleSubmit.bind(this)
+      this.handleNewComment = this.handleNewComment.bind(this)
+    }
+
+    handleNewComment(){
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+         }
+        sleep(100).then(() => {
+            //// code
+            console.log('handle comment called');
+            this.props.onNewComment()
+            })
     }
 
     handleSubmit(e){
@@ -33,7 +45,11 @@ class CommentForm extends React.Component {
             response = response.json()
             })
         .then( (data) => this.setState({success: true, the_comment : ''}))
-        .catch( (err) => console.log(err))
+        // change the state of the parent component so that the 
+        // component can re render with the newly submitted comment 
+        .then(this.handleNewComment())
+        // catch any error and log that error in console 
+        .catch( (err) => console.log(err))     
         
     }
 
