@@ -20,7 +20,8 @@ class CommentForm extends React.Component {
             return new Promise(resolve => setTimeout(resolve, ms));
          }
         sleep(100).then(() => {
-            //// code
+            //// sleep for a second and change the state to re-render the page
+            // the sleep is necessary for the complexity of race codition
             this.props.onNewComment()
             })
     }
