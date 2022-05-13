@@ -15,14 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+
+from . import views
 
 urlpatterns = [
-    path('', include('root.urls')),
-    path('ml_model/', include('ml_models.urls')),
-    path('blog/', include('Blog.urls')),
-    path('api/', include('Api.urls')),
-    path('api-auth/', include('rest_framework.urls')),
-    path('speech/', include('SpeechRecog.urls')),
-    path('admin/', admin.site.urls),
-    
+    path('', views.recognize_text, name = 'speech' ),
 ]

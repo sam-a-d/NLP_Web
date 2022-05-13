@@ -1,1 +1,8 @@
 db.sqlite3
+SpeechRecog/__pycache__/__init__.cpython-310.pyc
+SpeechRecog/__pycache__/urls.cpython-310.pyc
+NLP_web/__pycache__/urls.cpython-310.pyc
+SpeechRecog/migrations/__init__.py
+SpeechRecog/__init__.py
+NLP_web/__pycache__/.*
+.gitignore
