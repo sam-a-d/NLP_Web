@@ -14,6 +14,7 @@ class SentenceAnalysisForm extends React.Component{
 
       this.handleChange = this.handleChange.bind(this)
       this.handleSubmit = this.handleSubmit.bind(this)
+      this.handleClick = this.handleClick.bind(this)
     }
 
 
@@ -21,14 +22,7 @@ class SentenceAnalysisForm extends React.Component{
         e.preventDefault();
 
         let url = 'http://localhost:8000/api/sentianalyze/';
-        // const conf = {
-        //     method : 'POST',
-        //     headers : { 'Content-Type' : 'application/JSON' },
-        //     body : JSON.stringify({
-        //         "sentence": this.state.the_sentence
-        //     })
-        // }
-  
+
         axios.post(url, {'sentence' : this.state.the_sentence})
         .then(
             response =>{
@@ -41,16 +35,7 @@ class SentenceAnalysisForm extends React.Component{
                 console.log(error)
             }
         )
-        // console.log(this.state.the_result)
-        // fetch(url, conf)
-        // .then((response) => {
-        //     response = response.json()
-        //     console.log(response)
-        // })
-        // .then( (data) => this.setState({data}))
-        // .catch( (err) => console.log(err))
-        
-        // console.log(this.state);
+
     }
 
     handleChange(e){
@@ -59,7 +44,18 @@ class SentenceAnalysisForm extends React.Component{
             success : true
         })
     }
-
+    handleClick(e){
+        e.preventDefault()
+        let url = 'http://localhost:8000/api/voice-to-text/'
+        axios.get(url)
+        .then(response=>{
+            console.log(response.data)
+            this.setState({
+                'the_sentence' : response.data.voice_text
+            })
+        })
+        
+    }
     render(){
         return(
             <>
@@ -74,9 +70,10 @@ class SentenceAnalysisForm extends React.Component{
                                     <div className="form-group">
                                         <textarea onChange={this.handleChange} 
                                             className="text-center text-success form-control h4" 
-                                            rows="3" id="comment" required>
+                                            rows="3" id="comment" value={this.state.the_sentence} required>
                                         </textarea>
                                     </div>
+                                        <button onClick={this.handleClick} className='btn-danger btn mr-2'><i className="fa fa-microphone" aria-hidden="true"></i></button>
                                         <button className="btn btn-success" type="Submit">Submit</button>
                                     </form>
                                 </div>

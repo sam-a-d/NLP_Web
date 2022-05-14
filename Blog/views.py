@@ -49,7 +49,6 @@ class BlogDetailView(DetailView):
         return context
     
 
-# still working on this
 def create_comment(request):
     if request.method == "POST":
         next = request.POST.get('next', '/')

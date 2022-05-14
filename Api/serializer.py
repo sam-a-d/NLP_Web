@@ -52,4 +52,7 @@ class PostDetailSerializer(serializers.ModelSerializer):
 
 class SentenceAnalysisSerializer(serializers.Serializer):
     sentiment_class = serializers.CharField(read_only = True)
-    
+
+
+class VoiceRecognitionSerializer(serializers.Serializer):
+    voice_text = serializers.CharField(read_only = True)

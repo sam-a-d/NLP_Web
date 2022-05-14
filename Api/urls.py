@@ -23,4 +23,5 @@ urlpatterns = [
     path('post/<int:pk>', views.post_detail, name = 'post-detail' ),
     path('comments/', views.comments, name = 'comments' ),
     path('sentianalyze/', views.SentenceAnalysis, name = 'senti-analysis' ),
+    path('voice-to-text/', views.recognize_text, name = 'voice-to-text' ),
 ]

@@ -4,6 +4,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 
+import speech_recognition as sr
+
 from Blog.models import Post, Comment
 from .serializer import *
 from ml_models.nlp_models import Sentiment_analysis
@@ -65,4 +67,33 @@ def SentenceAnalysis(request):
         sentence = data["sentence"]
         res = senti.get_sentence_analysis(sentence)
         serializer = SentenceAnalysisSerializer(res)
+        return JsonResponse(serializer.data)
+
+
+
+
+
+@csrf_exempt
+def recognize_text(request):
+
+    # make a voice recognizer object 
+    r = sr.Recognizer()
+
+    if request.method == 'GET':
+        voice_text = ''
+
+        with sr.Microphone() as source:
+            print('Speak anything')
+            r.adjust_for_ambient_noise(source, duration = 0.5)
+            audio = r.listen(source)
+            try:
+                text = r.recognize_google(audio, language="bn-BD")
+                voice_text = text
+            except:
+                text = None
+
+        voice_text = {
+            'voice_text' : voice_text
+        }
+        serializer = VoiceRecognitionSerializer(voice_text)
         return JsonResponse(serializer.data)
