@@ -47,6 +47,7 @@ function BlogDetail() {
                                         <Comment 
                                             the_comments={post.comments} 
                                             com_stat={post.custom_field.comment_stats}
+                                            sentiment_array = {post.custom_field.samad_demo}
                                             post_id = {post.id}
                                             onNewComment = {() => setTotal_comment( total_comment + 1)}
                                         />

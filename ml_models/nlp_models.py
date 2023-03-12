@@ -43,6 +43,7 @@ class Sentiment_analysis:
         if len(self.comments) == 0:
             self.comments = ['যা খুশি করেন']
         res = self.nlp_model.predict(self.comments)
+        print(res)
         sentiment_count =  dict(Counter(res))
         
         sentiments = ['positive', 'neutral', 'negative']
@@ -54,7 +55,7 @@ class Sentiment_analysis:
         sentiment_count['percent_positive'] =  round(sentiment_count['positive'] * 100 / len(res), 2) 
         sentiment_count['percent_neutral'] =   round(sentiment_count['neutral']  * 100 / len(res), 2) 
         sentiment_count['percent_negative'] =  round(sentiment_count['negative'] * 100 / len(res), 2)
-
+        sentiment_count['all_sentiments'] = list(res)
         return sentiment_count
 
 

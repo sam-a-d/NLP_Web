@@ -10,7 +10,7 @@ export default function Comment(props) {
     return(
         <>
             <CommentAnalysisStat com_stat={props.com_stat} />
-            <AllComments the_comments={props.the_comments} />
+            <AllComments the_comments={props.the_comments} the_sentiments_array={props.sentiment_array} />
             <CommentForm post_id={props.post_id} onNewComment={() => props.onNewComment()} />
         </>
     )

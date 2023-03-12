@@ -1,8 +1,51 @@
-db.sqlite3
-SpeechRecog/__pycache__/__init__.cpython-310.pyc
-SpeechRecog/__pycache__/urls.cpython-310.pyc
-NLP_web/__pycache__/urls.cpython-310.pyc
-SpeechRecog/migrations/__init__.py
-SpeechRecog/__init__.py
-NLP_web/__pycache__/.*
-.gitignore
+*.pyc
+/backend/db.sqlite3
+.DS_Store
+.env
+*/settings/local.py
+/staticfiles/*
+/mediafiles/*
+__pycache__/
+/.vscode/
+
+# coverage result
+.coverage
+/coverage/
+
+# pycharm
+.idea/
+
+# data
+*.dump
+
+# npm
+node_modules/
+npm-debug.log
+
+# Webpack
+/frontend/bundles/*
+/frontend/webpack_bundles/*
+/webpack-stats.json
+
+# Sass
+.sass-cache
+*.map
+
+# General
+/{{project_name}}-venv/
+/venv/
+/env/
+/output/
+/cache/
+boilerplate.zip
+
+# Spritesmith
+spritesmith-generated/
+spritesmith.scss
+
+# templated email
+tmp_email/
+
+.direnv
+.envrc
+.tool-versions

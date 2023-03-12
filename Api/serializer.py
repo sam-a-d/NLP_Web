@@ -42,9 +42,10 @@ class PostDetailSerializer(serializers.ModelSerializer):
         # analyse sentiment using machine learning model
         senti = Sentiment_analysis()
         comment_analysis_result = senti.get_comment_analysis(related_comments)
+        print('comment_analysis_result', comment_analysis_result)
         
         # return comments statistics that recived from the sentiment analysis
-        return {'comment_stats' : comment_analysis_result}
+        return {'comment_stats' : comment_analysis_result, 'samad_demo' : comment_analysis_result['all_sentiments']}
 
     class Meta:
         model = Post
