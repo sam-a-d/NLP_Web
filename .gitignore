@@ -6,6 +6,7 @@
 /staticfiles/*
 /mediafiles/*
 __pycache__/
+.*/__pycache__/.*
 /.vscode/
 
 # coverage result
@@ -49,3 +50,4 @@ tmp_email/
 .direnv
 .envrc
 .tool-versions
+db.sqlite3
