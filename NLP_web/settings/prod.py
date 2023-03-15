@@ -40,7 +40,7 @@ STATICFILES_DIRS = [
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/var/www/djago_files/sent_analysis/static')
+STATIC_ROOT = os.path.join(BASE_DIR, '/var/www/djago_files/nlp_web/static')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/var/www/djago_files/sent_analysis/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/var/www/djago_files/nlp_web/media')
