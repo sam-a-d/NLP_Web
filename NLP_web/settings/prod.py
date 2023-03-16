@@ -44,3 +44,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, '/var/www/djago_files/nlp_web/static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/var/www/djago_files/nlp_web/media')
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ALLOWED_ORIGINS = [
+    "sa.banglasketch.org",
+    "http://banglasketch.org/"
+    "http://sa.banglasketch.org/"
+    "http://sa.banglasketch.org/:8000",
+]
