@@ -48,8 +48,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '/var/www/djago_files/nlp_web/media')
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ALLOWED_ORIGINS = [
-    "sa.banglasketch.org",
-    "http://banglasketch.org/"
-    "http://sa.banglasketch.org/"
+    '*.banglasketch.org',
+    'https://*.banglasketch.org',
+    'http://*.banglasketch.org',
     "http://sa.banglasketch.org/:8000",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.banglasketch.org',
+    'http://*.banglasketch.org',
+    'https://*.127.0.0.1'
 ]
